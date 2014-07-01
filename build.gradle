@@ -30,3 +30,9 @@ class MyPlugin implements Plugin<Project> {
         }
     }
 }
+
+
+
+task wrapper(type:Wrapper){
+    gradleVersion = "2.0"
+}
