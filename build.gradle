@@ -1,0 +1,32 @@
+
+allprojects {
+    apply plugin : MyPlugin
+
+}
+
+project(":common"){
+
+    dependencies{
+        myconf project(":foo")
+    }
+}
+project(":client"){
+
+    dependencies{
+        myconf project(":common")
+    }
+}
+
+
+class MyPlugin implements Plugin<Project> {
+    void apply(Project project) {
+
+        project.apply plugin : "base"
+        project.configurations {
+            myconf
+        }
+        project.task("myTask")<< {
+            println project.name
+        }
+    }
+}
